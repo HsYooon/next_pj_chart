@@ -6,7 +6,7 @@ import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 
 function Map(props) {
     useLayoutEffect(()=>{
-        let root = am5.Root.new("chartdiv");
+        let root = am5.Root.new("chartdiv2");
 
           root.setThemes([am5themes_Animated.new(root)]);
 
@@ -87,7 +87,7 @@ function Map(props) {
               min: 10,
               max: 50,
               minValue: 0,
-              maxValue: 100,
+              maxValue: 1000,
               key: "radius"
             }
           ]);
@@ -101,7 +101,8 @@ function Map(props) {
 
           function updateData() {
             for (var i = 0; i < bubbleSeries.dataItems.length; i++) {
-              bubbleSeries.data.setIndex(i, { value: Math.round(Math.random() * 100), id: props.data[i].id, name: props.data[i].name })
+              //Math.round(Math.random() * 100)
+              bubbleSeries.data.setIndex(i, { value: props.data[i].value, id: props.data[i].id, name: props.data[i].name })
             }
           }
 
@@ -112,7 +113,7 @@ function Map(props) {
     },[]);
 
     return (
-        <div id="chartdiv" style={{ width: "80%", height: "500px" }}></div>
+        <div id="chartdiv2" style={{ width: "80%", height: "500px" }}></div>
       );
     }
     export default Map;
